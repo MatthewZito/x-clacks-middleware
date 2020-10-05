@@ -24,7 +24,7 @@ In Sir Terry's novel "Going Postal"...the inventor of the Clacks...lost his only
 
 
 ### <a name="feat"></a> Features
-[!screenshot](https://github.com/MatthewZito/x-clacks-middleware/tree/master/documentation/header.png)
+![screenshot](https://github.com/MatthewZito/x-clacks-middleware/blob/master/documentation/header.png)
 
   - zero dependencies
   - plug n' play
