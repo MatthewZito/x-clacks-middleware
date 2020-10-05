@@ -1,0 +1,67 @@
+{
+  "name": "x-clacks-middleware",
+  "version": "0.0.0-development",
+  "description": "x-clacks-overhead middleware for Express.js",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/",
+    "CONTRIBUTING.md"
+  ],
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "scripts": {
+    "coverage": "jest --coverage && rimraf ./coverage",
+    "lint": "eslint ./",
+    "test": "jest && rimraf ./coverage",
+    "testmon": "jest --watch _tests_.*",
+    "prebuild": "rimraf ./lib",
+    "build": "babel ./src -d ./lib",
+    "clean": "rimraf ./coverage && rimraf ./lib",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "prerelease": "npm pack && tar -xvzf *.tgz && rimraf package *.tgz",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthewZito/x-clacks-middleware.git"
+  },
+  "keywords": [
+    "expressjs",
+    "HTTP headers",
+    "middleware",
+    "micro-library"
+  ],
+  "author": "Matthew T Zito",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatthewZito/x-clacks-middleware/issues"
+  },
+  "homepage": "https://github.com/MatthewZito/x-clacks-middleware#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "babel-eslint": "^10.1.0",
+    "coveralls": "^3.1.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.4.0",
+    "express": "^4.17.1",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.1.1",
+    "supertest": "^5.0.0"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
