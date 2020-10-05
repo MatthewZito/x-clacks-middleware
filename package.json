@@ -1,7 +1,7 @@
 {
   "name": "x-clacks-middleware",
   "version": "0.0.0-development",
-  "description": "x-clacks-overhead middleware for Express.js",
+  "description": "x-clacks-overhead header middleware for Express.js",
   "main": "./lib/index.js",
   "files": [
     "lib/",
