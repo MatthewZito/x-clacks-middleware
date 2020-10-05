@@ -6,7 +6,7 @@ const request = require("supertest");
 /* Mocks */
 const singleName = ["John Conway"];
 const listOfNames = ["Bernd Witthuser", "Holger Czukay", "Cornelius Cardew"];
-const withGNU = /^(GNU Bernd Witthuser|GNU Holger Czukay|GNU Cornelius Cardew)$/
+const withGNU = /^(GNU Bernd Witthuser|GNU Holger Czukay|GNU Cornelius Cardew)$/;
 
 
 describe("setXClacksOverheadHeader() integration tests", () => {
@@ -14,20 +14,17 @@ describe("setXClacksOverheadHeader() integration tests", () => {
         const app = connect();
         app.use(setXClacksOverheadHeader());
         app.use((req, res) => {
-            res.end("Hello world!")
+            res.end("Hello world!");
         });
     
         const isNotEmpty = /./;
 
-        it("should set the X-Clacks-Overhead header", () => {
-            return request(app).get("/")
-              .expect("X-Clacks-Overhead", isNotEmpty);
-        });
+        it("should set the X-Clacks-Overhead header", 
+            () => request(app).get("/").expect("X-Clacks-Overhead", isNotEmpty));
 
-        it("should default to a header value of 'GNU Terry Pratchett'", () => {
-            return request(app).get("/")
-              .expect("X-Clacks-Overhead", "GNU Terry Pratchett");
-        });
+
+        it("should default to a header value of 'GNU Terry Pratchett'", () => request(app).get("/")
+              .expect("X-Clacks-Overhead", "GNU Terry Pratchett"));
     });
 
     describe("evaluation of X-Clacks-OverHead headers with options", () => {
@@ -38,7 +35,7 @@ describe("setXClacksOverheadHeader() integration tests", () => {
                 names: singleName
             }));
             app.use((req, res) => {
-                res.end("Hello world!")
+                res.end("Hello world!");
             });
 
             return request(app).get("/")
@@ -51,11 +48,11 @@ describe("setXClacksOverheadHeader() integration tests", () => {
                 names: listOfNames
             }));
             app.use((req, res) => {
-                res.end("Hello world!")
+                res.end("Hello world!");
             });
 
             return request(app).get("/")
-              .expect("X-Clacks-Overhead", withGNU);
+                .expect("X-Clacks-Overhead", withGNU);
         });
     });
 });
